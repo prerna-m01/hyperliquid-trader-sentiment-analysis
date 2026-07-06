@@ -47,7 +47,7 @@ def pnl_by_sentiment(df):
     pnl.plot(kind="bar")
 
     plt.title("Average Closed PnL by Sentiment")
-    plt.xlabel("Sentiment")
+    plt.xlabel("Market Sentiment")
     plt.ylabel("Average Closed PnL")
 
     plt.tight_layout()
