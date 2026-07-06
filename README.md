@@ -2,36 +2,37 @@
 
 ## Overview
 
-This project analyzes the relationship between **Bitcoin market sentiment** and **Hyperliquid trader performance** by combining historical trading data with the **Bitcoin Fear & Greed Index**.
+This project explores the relationship between **Bitcoin market sentiment** and **trader performance on Hyperliquid** by integrating historical trading records with the **Bitcoin Fear & Greed Index**.
 
-The objective is to understand how market psychology influences trading behavior and profitability, while generating actionable insights that can contribute to smarter trading strategies.
-
-The project follows a complete data analytics workflow including data preprocessing, exploratory data analysis (EDA), statistical analysis, and business insight generation.
+The analysis follows a complete data analytics workflow—from data preprocessing and integration to exploratory analysis, statistical evaluation, and business recommendations—to identify patterns that can support more informed trading strategies.
 
 ---
 
 ## Problem Statement
 
-Market sentiment is one of the major factors influencing cryptocurrency trading decisions. While the Bitcoin Fear & Greed Index captures overall market psychology, Hyperliquid provides detailed historical trading records.
+Financial markets are strongly influenced by investor psychology. The Bitcoin Fear & Greed Index provides a daily measure of overall market sentiment, while Hyperliquid trading records capture detailed information about executed trades and realized profits.
 
-This project investigates whether trader behavior and profitability change under different market sentiment conditions by answering questions such as:
+The objective of this project is to investigate whether trader behavior and profitability vary across different market sentiment conditions.
 
-- Does trader profitability vary across Fear, Neutral, and Greed markets?
-- Which cryptocurrencies dominate trading activity?
+The analysis aims to answer the following questions:
+
+- How is trading activity distributed across different market sentiment conditions?
+- Does trader profitability change during Fear, Neutral, and Greed markets?
+- Which cryptocurrencies contribute most to trading activity?
 - How do different trading directions perform?
-- Which traders consistently generate higher profits?
-- Can market sentiment provide useful context for trading decisions?
+- What business insights can be derived to support smarter trading strategies?
 
 ---
 
-## Objectives
+## Project Objectives
 
-- Clean and preprocess multiple datasets.
+- Load and preprocess multiple datasets.
+- Clean and standardize trading records.
 - Merge trading data with the Bitcoin Fear & Greed Index.
-- Perform exploratory data analysis.
-- Compare trader performance across market sentiment categories.
+- Perform exploratory data analysis (EDA).
+- Compare trader performance across sentiment categories.
 - Generate statistical summaries and business insights.
-- Recommend data-driven trading strategies.
+- Provide actionable recommendations based on the findings.
 
 ---
 
@@ -39,17 +40,17 @@ This project investigates whether trader behavior and profitability change under
 
 ### 1. Hyperliquid Historical Trading Dataset
 
-Contains historical trade execution records.
+Contains historical trading activity from Hyperliquid.
 
-Key columns include:
+Key attributes include:
 
 - Account
 - Coin
 - Execution Price
-- Size (USD)
-- Direction
-- Closed PnL
-- Fee
+- Trade Size (USD)
+- Trading Direction
+- Closed Profit & Loss (PnL)
+- Trading Fee
 - Timestamp
 
 ---
@@ -58,35 +59,40 @@ Key columns include:
 
 Contains daily Bitcoin market sentiment.
 
-Columns:
+Attributes include:
 
 - Date
 - Sentiment Score
 - Market Sentiment Classification
+  - Extreme Fear
+  - Fear
+  - Neutral
+  - Greed
+  - Extreme Greed
 
 ---
 
 ## Project Workflow
 
 ```
-Data Collection
-        │
-        ▼
+Load Datasets
+      │
+      ▼
 Data Cleaning & Preprocessing
-        │
-        ▼
-Dataset Merge
-        │
-        ▼
+      │
+      ▼
+Dataset Integration
+      │
+      ▼
 Exploratory Data Analysis
-        │
-        ▼
+      │
+      ▼
 Statistical Analysis
-        │
-        ▼
+      │
+      ▼
 Business Insights
-        │
-        ▼
+      │
+      ▼
 Recommendations
 ```
 
@@ -101,6 +107,10 @@ hyperliquid-trader-sentiment-analysis/
 ├── data/
 │   ├── raw/
 │   └── processed/
+│
+├── images/
+│   ├── market_sentiment_distribution.png
+│   └── trader_performance_by_sentiment.png
 │
 ├── notebooks/
 │   └── 01_sentiment_analysis.ipynb
@@ -121,6 +131,180 @@ hyperliquid-trader-sentiment-analysis/
 
 ---
 
+## Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/<your-username>/hyperliquid-trader-sentiment-analysis.git
+```
+
+Navigate into the project
+
+```bash
+cd hyperliquid-trader-sentiment-analysis
+```
+
+Create a virtual environment
+
+```bash
+python -m venv .venv
+```
+
+Activate the environment
+
+### Windows
+
+```bash
+.venv\Scripts\activate
+```
+
+### Linux / macOS
+
+```bash
+source .venv/bin/activate
+```
+
+Install the required packages
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Running the Project
+
+Run the data loading script
+
+```bash
+python main.py
+```
+
+For the complete analysis, open the notebook:
+
+```
+notebooks/01_sentiment_analysis.ipynb
+```
+
+Run all cells sequentially.
+
+---
+
+# Sample Visualizations
+
+The following visualizations summarize some of the key findings from the analysis.
+
+---
+
+## 1. Market Sentiment Distribution
+
+This visualization illustrates the number of trades executed under different Bitcoin market sentiment categories after merging the trading dataset with the Fear & Greed Index.
+
+<p align="center">
+  <img src="images/market_sentiment_distribution.png" width="750">
+</p>
+
+### Observation
+
+- Most trading activity occurred during **Fear** market conditions.
+- **Greed** represents the second-largest share of trading activity.
+- **Neutral** and **Extreme Greed** account for relatively fewer trades.
+- The dataset indicates that trading activity is concentrated during periods of market fear.
+
+---
+
+## 2. Trader Performance by Market Sentiment
+
+This visualization compares the average realized profit (**Closed PnL**) across different Bitcoin market sentiment categories.
+
+<p align="center">
+  <img src="images/trader_performance_by_sentiment.png" width="750">
+</p>
+
+### Observation
+
+- Average trader profitability varies across different market sentiment categories.
+- In this dataset, trades executed during **Greed** conditions show the highest average realized profit.
+- **Fear** also exhibits higher average profitability than **Neutral** and **Extreme Greed**.
+- The visualization demonstrates an association between market sentiment and trader performance; however, it should not be interpreted as evidence of causation.
+
+---
+
+## Methodology
+
+The project was completed in five phases:
+
+### Phase 1 — Data Loading
+
+- Loaded both datasets successfully.
+- Verified dataset structure and column names.
+
+### Phase 2 — Data Cleaning & Preprocessing
+
+- Standardized column names.
+- Converted timestamps into datetime format.
+- Created a common date column.
+- Converted numerical columns.
+- Removed duplicate records.
+- Performed data quality checks.
+
+### Phase 3 — Dataset Integration
+
+- Merged trading data with the Fear & Greed Index using the trading date.
+- Validated the merge.
+- Removed records without matching sentiment values for analysis.
+
+### Phase 4 — Exploratory Data Analysis
+
+Performed exploratory analysis on:
+
+- Market sentiment distribution
+- Trader profitability
+- Trading direction
+- Most traded cryptocurrencies
+- Trade size distribution
+- Trading fee distribution
+
+### Phase 5 — Statistical Analysis
+
+Computed:
+
+- Average Closed PnL
+- Median Closed PnL
+- Total Closed PnL
+- Win Rate
+- Performance by trading direction
+- Coin-wise profitability
+- Top-performing trader accounts
+
+---
+
+## Key Findings
+
+The analysis revealed several important insights:
+
+- Trading activity is primarily concentrated during **Fear** market conditions.
+- **HYPE** is the most actively traded cryptocurrency in the dataset.
+- Long-position trades occur more frequently than short-position trades.
+- Average realized profit differs across market sentiment categories, with **Greed** showing the highest average Closed PnL.
+- Trade sizes and transaction fees exhibit highly right-skewed distributions, indicating that a relatively small number of large trades contribute significantly to overall trading volume.
+- Trader profitability is unevenly distributed, with a small number of accounts generating a substantial share of total realized profits.
+
+---
+
+## Business Recommendations
+
+Based on the analysis, the following recommendations may support improved trading decisions:
+
+- Use the Bitcoin Fear & Greed Index as a complementary indicator alongside technical analysis.
+- Monitor trading behavior during **Fear** and **Greed** periods, as trader performance varies across sentiment conditions.
+- Investigate consistently profitable trader accounts to identify successful trading patterns.
+- Focus further analysis on highly traded assets such as **HYPE** and **BTC**.
+- Incorporate additional market indicators, including Bitcoin price, volatility, and trading volume, to develop more comprehensive trading models.
+
+---
+
 ## Technologies Used
 
 - Python
@@ -131,147 +315,24 @@ hyperliquid-trader-sentiment-analysis/
 
 ---
 
-## Methodology
-
-### Phase 1 — Data Loading
-
-- Imported trading and sentiment datasets.
-- Verified successful loading.
-
-### Phase 2 — Data Cleaning
-
-- Standardized column names.
-- Converted timestamps into datetime.
-- Removed duplicate records.
-- Converted numerical columns.
-- Created a common date column.
-
-### Phase 3 — Data Integration
-
-- Merged datasets using the date column.
-- Validated merge quality.
-- Removed records without matching sentiment for analysis.
-
-### Phase 4 — Exploratory Data Analysis
-
-Explored:
-
-- Market sentiment distribution
-- Top traded cryptocurrencies
-- Trading directions
-- Profitability across sentiment categories
-- Trade size distribution
-- Fee distribution
-
-### Phase 5 — Statistical Analysis
-
-Calculated:
-
-- Average Closed PnL
-- Median Closed PnL
-- Total PnL
-- Win Rate
-- Performance by trading direction
-- Coin-wise profitability
-- Top performing trader accounts
-
----
-
-## Key Findings
-
-- Trading activity is concentrated during **Fear** market conditions.
-- **HYPE** is the most actively traded cryptocurrency in the dataset.
-- Long positions occur more frequently than short positions.
-- Average trader profitability varies across different market sentiment categories.
-- Trade sizes and transaction fees exhibit highly right-skewed distributions.
-- A relatively small number of trader accounts contribute a significant share of total realized profits.
-
----
-
-## Business Recommendations
-
-Based on the analysis:
-
-- Include Bitcoin market sentiment as an additional trading indicator.
-- Combine sentiment analysis with technical indicators rather than relying on sentiment alone.
-- Monitor trader behavior during Fear and Greed periods.
-- Focus additional analysis on highly traded assets such as HYPE and BTC.
-- Apply appropriate risk management during periods of extreme market sentiment.
-
----
-
-## How to Run
-
-### Clone the repository
-
-```bash
-git clone https://github.com/prerna-m01/hyperliquid-trader-sentiment-analysis.git
-```
-
-### Navigate to the project
-
-```bash
-cd hyperliquid-trader-sentiment-analysis
-```
-
-### Create a virtual environment
-
-```bash
-python -m venv .venv
-```
-
-### Activate the virtual environment
-
-Windows
-
-```bash
-.venv\Scripts\activate
-```
-
-Linux / macOS
-
-```bash
-source .venv/bin/activate
-```
-
-### Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### Run the project
-
-```bash
-python main.py
-```
-
-### Open the notebook
-
-```text
-notebooks/01_sentiment_analysis.ipynb
-```
-
-Run all cells sequentially.
-
----
-
 ## Future Improvements
 
-Future work could include:
+Potential extensions of this project include:
 
-- Integrating live Bitcoin price data.
-- Adding market volatility indicators.
-- Building predictive machine learning models.
-- Performing time-series analysis.
-- Developing an interactive dashboard using Streamlit or Power BI.
+- Integration of live Bitcoin market data.
+- Time-series analysis of trader behavior.
+- Machine learning models for profit prediction.
+- Interactive dashboards using Streamlit or Power BI.
+- Real-time market sentiment monitoring.
 
 ---
 
 ## Author
 
-**Prerna Mishra**
+**Your Name**
 
 GitHub: https://github.com/prerna-m01
 
-LinkedIn: https://linkedin.com/in/prernamishra01
+LinkedIn: www.linkedin.com/in/prernamishra01
+
+---
