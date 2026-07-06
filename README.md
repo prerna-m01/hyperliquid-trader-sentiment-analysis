@@ -202,7 +202,7 @@ The following visualizations summarize some of the key findings from the analysi
 This visualization illustrates the number of trades executed under different Bitcoin market sentiment categories after merging the trading dataset with the Fear & Greed Index.
 
 <p align="center">
-  <img src="images/market sentiment distribution.png" width="750">
+  <img src="images/market_sentiment_distribution.png" width="750">
 </p>
 
 ### Observation
