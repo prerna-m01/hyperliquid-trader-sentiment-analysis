@@ -136,7 +136,7 @@ hyperliquid-trader-sentiment-analysis/
 Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/hyperliquid-trader-sentiment-analysis.git
+git clone https://github.com/prerna-m01/hyperliquid-trader-sentiment-analysis.git
 ```
 
 Navigate into the project
@@ -202,7 +202,7 @@ The following visualizations summarize some of the key findings from the analysi
 This visualization illustrates the number of trades executed under different Bitcoin market sentiment categories after merging the trading dataset with the Fear & Greed Index.
 
 <p align="center">
-  <img src="images/market_sentiment_distribution.png" width="750">
+  <img src="images/market sentiment distribution.png" width="750">
 </p>
 
 ### Observation
